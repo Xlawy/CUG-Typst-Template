@@ -3,6 +3,7 @@
 ## 模版简介
 
 CUG-Typst-Template 是 [Typst](https://github.com/typst/typst) 的模版，可用于编写中国地质大学（武汉）的报告。自行更换LOGO之后也可用于其他学校。
+模版中部分代码使用参考了 [SimplePaper](https://github.com/jinhao-huang/SimplePaper)。
 
 ## 使用说明
 
@@ -23,3 +24,13 @@ CUG-Typst-Template 是 [Typst](https://github.com/typst/typst) 的模版，可�
 ### 使用环境
 
 由于网页版 Typst 没有内置这些中文字体，你需要手动上传字体以编译，这会导致每次打开模板的时候都会全量下载一遍字体。因此**不推荐在网页版上使用该模板**。推荐下载到本地之后使用VSCode编译使用。
+
+## 使用效果
+
+![](https://cdn.jsdelivr.net/gh/Xlawy/ImageHosting/img/sample_00.png)
+
+![](https://cdn.jsdelivr.net/gh/Xlawy/ImageHosting/img/sample_01.png)
+
+![](https://cdn.jsdelivr.net/gh/Xlawy/ImageHosting/img/sample_02.png)
+
+![](https://cdn.jsdelivr.net/gh/Xlawy/ImageHosting/img/sample_03.png)
