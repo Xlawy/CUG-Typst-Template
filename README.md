@@ -1,0 +1,1 @@
+# CUG-Typst-Template
