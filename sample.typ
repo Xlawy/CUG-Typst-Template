@@ -60,6 +60,9 @@ caption: [这是地大LOGO],
 print("Hello CUG!")
 ```
 
+行内代码也非常简单，就像这样 ```python print("Hello CUG!") ```。
+
+
 == note-me
 #nt.note[
   Highlights information that users should take into account, even when skimming.
