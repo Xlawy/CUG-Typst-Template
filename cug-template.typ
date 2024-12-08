@@ -10,6 +10,7 @@
   college: "学院",
   coverPage: true,
   outlinePage: true,
+  reportName: "课程报告",
   body
 ) = {
 
@@ -49,7 +50,7 @@
     #v(-0.5em)
     // 课程报告
     #text(size: 40pt, tracking: 18pt, font: zh_song, weight: "semibold")[
-      课程报告
+      #reportName
     ]
 
     #v(-0.5em)

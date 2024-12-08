@@ -13,6 +13,7 @@
     "12",
     "05"
   ),
+  reportName: "课程报告",
   courseName: "计算机图形学基础",
   majorName: "软件工程",
   name: "张张张",
