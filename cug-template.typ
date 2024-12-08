@@ -8,6 +8,8 @@
   studentID: "学号",
   teacher: "指导老师",
   college: "学院",
+  coverPage: true,
+  outlinePage: true,
   body
 ) = {
 
@@ -35,7 +37,8 @@
 
 
     // 封面
-    align(center)[
+    if coverPage==true [
+          #align(center)[
 
     #v(4em)
 
@@ -78,6 +81,8 @@
       #date.at(0)年#date.at(1)月#date.at(2)日
     ]
   ]
+    ]
+
 
 
 
@@ -100,7 +105,9 @@
     it
   }
 
-  outline(title: "目录", indent: auto)
+  if outlinePage == true [
+      #outline(title: "目录", indent: auto)
+  ]
 
 
 

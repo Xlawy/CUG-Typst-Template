@@ -19,7 +19,9 @@
   classNumber: "191234",
   studentID: "2022123456",
   teacher: "张张张",
-  college: "计算机学院"
+  college: "计算机学院",
+  coverPage: true,
+  outlinePage: true,
 )
 
 
