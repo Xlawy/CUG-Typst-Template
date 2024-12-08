@@ -223,7 +223,7 @@
     toprule,
     table.header(..cells.slice(0, count: column)),
     midrule,
-    ..cells.slice(2),
+    ..cells.slice(column),
     bottomrule
   )
 }

@@ -29,7 +29,7 @@
 
 = 示例
 
-Github @CUG-Typst-Templete
+欢迎在Github @CUG-Typst-Templete 上给一个Star🌟。
 
 == 三线表
 
@@ -37,21 +37,22 @@ Github @CUG-Typst-Templete
 #figure(
 three-line-table(3,
   (
-    [Name], [Made public], [3],
-    [Typst], [2023],
-    LaTeX, [1984],
-    TeX
+    [这], [里], [是],
+    [三], [线], [表],
+    [三], [线], [表],
   )
 ),
-caption: [这里是caption]
+caption: [这是三线表]
 )<表格1>
 
 
 == 图片
 
 #figure(image("./Resource/logo_cug.png", width: 15%),
-caption: [地大LOGO],
+caption: [这是地大LOGO],
 )<地大LOGO>
+
+通过\@符号你可以引用图表 @地大LOGO。
 
 == 代码块
 
