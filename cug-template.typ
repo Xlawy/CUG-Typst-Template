@@ -107,6 +107,7 @@
   }
 
   if outlinePage == true [
+    #pagebreak()
       #outline(title: "目录", indent: auto)
   ]
 
