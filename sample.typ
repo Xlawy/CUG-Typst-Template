@@ -4,6 +4,12 @@
 
 
 
+#let abstarctContent = [
+  这里是摘要。
+  这里是摘要。
+
+  这里是摘要。和写正文是一样的。
+]
 
 
 #show: project.with(
@@ -11,7 +17,7 @@
   date: (
     "2024",
     "12",
-    "05"
+    "05",
   ),
   reportName: "课程报告",
   courseName: "计算机图形学基础",
@@ -23,7 +29,13 @@
   college: "计算机学院",
   coverPage: true,
   outlinePage: true,
+  abstarctPage: true,
+  abstarctContent: abstarctContent,
 )
+
+
+
+
 
 
 
@@ -35,21 +47,29 @@
 
 
 #figure(
-three-line-table(3,
-  (
-    [这], [里], [是],
-    [三], [线], [表],
-    [三], [线], [表],
-  )
-),
-caption: [这是三线表]
+  three-line-table(
+    3,
+    (
+      [这],
+      [里],
+      [是],
+      [三],
+      [线],
+      [表],
+      [三],
+      [线],
+      [表],
+    ),
+  ),
+  caption: [这是三线表],
 )<表格1>
 
 
 == 图片
 
-#figure(image("./Resource/logo_cug.png", width: 15%),
-caption: [这是地大LOGO],
+#figure(
+  image("./Resource/logo_cug.png", width: 15%),
+  caption: [这是地大LOGO],
 )<地大LOGO>
 
 通过\@符号你可以引用图表 @地大LOGO。

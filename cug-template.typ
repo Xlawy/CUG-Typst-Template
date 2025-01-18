@@ -1,3 +1,84 @@
+#let abstarct(content) = {
+  let zh_xiaobiaosong = ("FZXiaoBiaoSong-B05", "FZXiaoBiaoSong-B05S")
+  let zh_shusong = ("FZShuSong-Z01", "FZShuSong-Z01S")
+  let en_serif = "Times New Roman"
+  let zh_kai = ("FZKai-Z03", "FZKai-Z03S")
+  let zh_hei = ("FZHei-B01", "FZHei-B01S")
+  let en_code = "Menlo"
+  let body-font = (en_serif, ..zh_shusong)
+  let raw-font = (en_code, ..zh_hei)
+  let header-font = (en_serif, ..zh_kai)
+  let heading-font = (en_serif, ..zh_xiaobiaosong)
+  let strong-font = (en_serif, ..zh_hei)
+  let emph-font = (en_serif, ..zh_kai)
+
+
+  set text(font: body-font, lang: "zh", region: "cn")
+  // Main body
+  set enum(indent: 2em)
+  set list(indent: 2em)
+  set figure(gap: 0.8cm)
+
+  // 定义空白段，解决首段缩进问题
+  let blank_par = par()[#text()[#v(0em, weak: true)];#text()[#h(0em)]]
+
+  show figure: it => [
+    #v(12pt)
+    #set text(font: caption-font)
+    #it
+    #blank_par
+    #v(12pt)
+  ]
+
+  show image: it => [
+    #it
+    #blank_par
+  ]
+
+  show list: it => [
+    #it
+    #blank_par
+  ]
+
+  show enum: it => [
+    #it
+    #blank_par
+  ]
+
+  show table: it => [
+    #set text(font: body-font)
+    #it
+    #blank_par
+  ]
+
+
+  show strong: set text(font: strong-font)
+  show emph: set text(font: emph-font)
+  show ref: set text(black)
+  show raw.where(block: true): block.with(
+    width: 100%,
+    fill: luma(240),
+    inset: 10pt,
+  )
+
+  show raw.where(block: true): it => [
+    #it
+    #blank_par
+  ]
+
+  show raw: set text(font: raw-font)
+  show link: underline
+  show link: set text(blue)
+  set par(first-line-indent: 2em, justify: true)
+  // set text(font: body-font)
+  align(center)[
+    #text(size: 17pt, font: heading-font)[摘要]
+  ]
+
+  content
+}
+
+
 #let project(
   header: "",
   date: (),
@@ -11,9 +92,10 @@
   coverPage: true,
   outlinePage: true,
   reportName: "课程报告",
-  body
+  abstarctPage: false,
+  abstarctContent: "This is the Abstract Page",
+  body,
 ) = {
-
   // 字体设置
   let zh_shusong = ("FZShuSong-Z01", "FZShuSong-Z01S")
   let zh_xiaobiaosong = ("FZXiaoBiaoSong-B05", "FZXiaoBiaoSong-B05S")
@@ -37,64 +119,63 @@
   let raw-font = (en_code, ..zh_hei)
 
 
-    // 封面
-    if coverPage==true [
-          #align(center)[
+  // 封面
+  if coverPage == true [
+    #align(center)[
 
-    #v(4em)
+      #v(4em)
 
-    #image("./Resource/logo_cug.png", width: 35%)
-    #v(1em)
-    #image("./Resource/name_cug.png", width: 65%)
+      #image("./Resource/logo_cug.png", width: 35%)
+      #v(1em)
+      #image("./Resource/name_cug.png", width: 65%)
 
-    #v(-0.5em)
-    // 课程报告
-    #text(size: 40pt, tracking: 18pt, font: zh_song, weight: "semibold")[
-      #reportName
-    ]
+      #v(-0.5em)
+      // 课程报告
+      #text(size: 40pt, tracking: 18pt, font: zh_song, weight: "semibold")[
+        #reportName
+      ]
 
-    #v(-0.5em)
+      #v(-0.5em)
 
-    #set table(
-      stroke: (x, y) => if x > 1 {
-        (bottom: 0.7pt + black)  
-      },
-    )
+      #set table(
+        stroke: (x, y) => if x > 1 {
+          (bottom: 0.7pt + black)
+        },
+      )
 
-    #set text(size: 15pt, font: zh_song, weight: "semibold")
-    #table(
-      columns: (90pt, 30pt, 160pt),
-      inset: 10pt,
-      align: center,
-      [课程名称],[：],[#courseName],
-      "学        院",[：],[#college],
-      [专业名称],[：],[#majorName],
-      "姓        名",[：],[#name],
-      "班        号",[：],[#classNumber],
-      "学        号",[：],[#studentID],
-      [指导老师],[：],[#teacher],
-    )
+      #set text(size: 15pt, font: zh_song, weight: "semibold")
+      #table(
+        columns: (90pt, 30pt, 160pt),
+        inset: 10pt,
+        align: center,
+        [课程名称], [：], [#courseName],
+        "学        院", [：], [#college],
+        [专业名称], [：], [#majorName],
+        "姓        名", [：], [#name],
+        "班        号", [：], [#classNumber],
+        "学        号", [：], [#studentID],
+        [指导老师], [：], [#teacher],
+      )
 
-    #v(1.5em)
+      #v(1.5em)
 
-    // 日期
-    #text(size: 12pt, font: zh_song, weight: "semibold")[
-      #date.at(0)年#date.at(1)月#date.at(2)日
+      // 日期
+      #text(size: 12pt, font: zh_song, weight: "semibold")[
+        #date.at(0)年#date.at(1)月#date.at(2)日
+      ]
     ]
   ]
-    ]
 
 
+  // 摘要
+  if abstarctPage == true [
+    #pagebreak()
+    #abstarct(abstarctContent)
+  ]
 
 
-
-
-
-
-  // 目录  
-  show outline.entry.where(
-    level: 1
-  ):it => {
+  // 目录
+  show outline.entry.where(level: 1): it => {
     v(12pt, weak: true)
     set text()
     strong(it)
@@ -102,34 +183,36 @@
 
   show outline: it => {
     show heading: set align(center)
-    show heading: set text(20pt)
+    show heading: set text(17pt, font: heading-font)
     it
   }
 
   if outlinePage == true [
     #pagebreak()
-      #outline(title: "目录", indent: auto)
+    #outline(title: "目录", indent: auto)
   ]
 
 
-
   // 设置页眉和页码
-  set page(header: align(center)[ 
-    #set text(font: header-font, fill: gray)
-    #header
-  ], footer: [
-    #set align(center)
-    #set text()
-    #counter(page).display()
-  ])
+  set page(
+    header: align(center)[
+      #set text(font: header-font, fill: gray)
+      #header
+    ],
+    footer: [
+      #set align(center)
+      #set text()
+      #counter(page).display()
+    ],
+  )
 
-  // 从正文开始计数 
+  // 从正文开始计数
   counter(page).update(1)
 
   set heading(numbering: "1.1")
   set text(font: body-font, lang: "zh", region: "cn")
   set bibliography(style: "gb-7714-2015-numeric")
-  
+
   show heading: it => box(width: 100%)[
     #v(0.50em)
     #set text(font: heading-font)
@@ -138,9 +221,7 @@
     #it.body
   ]
 
-  show heading.where(
-    level: 1
-  ): it => box(width: 100%)[
+  show heading.where(level: 1): it => box(width: 100%)[
     #v(0.5em)
     #set align(center)
     #set heading(numbering: "一")
@@ -228,4 +309,3 @@
     bottomrule
   )
 }
-
