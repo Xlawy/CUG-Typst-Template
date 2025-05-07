@@ -202,7 +202,7 @@
     footer: [
       #set align(center)
       #set text()
-      #counter(page).display()
+      #context [#counter(page).display()]
     ],
   )
 
